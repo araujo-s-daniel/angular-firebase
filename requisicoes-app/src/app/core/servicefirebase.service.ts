@@ -16,7 +16,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
   }
 
   get(id: string): Observable<T> {
-    let doc = this.ref.doc<T>(id);
+    const doc = this.ref.doc<T>(id);
     return doc.get().pipe(map(snapshot => this.docToClass(snapshot)));
   }
 
@@ -25,7 +25,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
   }
 
   createOrUpdate(item: T): Promise<any> {
-    let id = item.id;
+    const id = item.id;
 
     if (!item) {
       return;
@@ -46,7 +46,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
       return this.ref.add(obj).then(res => {
         obj.id = res.id;
         this.ref.doc(res.id).set(obj);
-      })
+      });
     }
   }
 
@@ -55,12 +55,12 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
   }
 
   docToClass(snapshotDoc): T {
-    let obj = {
+    const obj = {
       id: snapshotDoc.id,
       ...(snapshotDoc.data() as T)
-    }
+    };
 
-    let typed = plainToClass(this.type, obj);
+    const typed = plainToClass(this.type, obj);
     return typed;
   }
 }
