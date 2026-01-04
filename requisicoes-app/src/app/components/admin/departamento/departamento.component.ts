@@ -53,8 +53,8 @@ export class DepartamentoComponent implements OnInit {
         Swal.fire(`Departamento ${!this.edit ? 'salvo' : 'atualizado'} com sucesso.`, '', 'success');
       })
       .catch((erro) => {
-        this.displayDialogDepartamento = false;
-        Swal.fire(`Erro ao ${!this.edit ? 'salvo' : 'atualizado'} o departamento.`, `Detalhes: ${erro}`, 'error');
+        this.displayDialogDepartamento = true;
+        Swal.fire(`Erro ao ${!this.edit ? 'salvar' : 'atualizar'} o departamento.`, `Detalhes: ${erro}`, 'error');
       });
     this.form.reset();
   }

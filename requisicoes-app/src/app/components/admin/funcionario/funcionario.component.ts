@@ -59,11 +59,10 @@ export class FuncionarioComponent implements OnInit {
       .then(() => {
         this.displayDialogFuncionario = false;
         Swal.fire(`Funcionário ${!this.edit ? 'salvo' : 'atualizado'} com sucesso.`, '', 'success');
-        this.displayDialogFuncionario = false;
       })
       .catch((erro) => {
         this.displayDialogFuncionario = true;
-        Swal.fire(`Erro ao ${!this.edit ? 'salvo' : 'atualizado'} o Funcionário.`, `Detalhes: ${erro}`, 'error');
+        Swal.fire(`Erro ao ${!this.edit ? 'salvar' : 'atualizar'} o Funcionário.`, `Detalhes: ${erro}`, 'error');
       });
     this.form.reset();
   }

@@ -21,10 +21,16 @@ const routes: Routes = [
     loadChildren: () => import('./components/admin/funcionario/funcionario.module')
       .then(m => m.FuncionarioModule), canActivate: [AuthguardService]
   },
+  {
+    path: 'admin/requisicao',
+    loadChildren: () => import('./components/admin/requisicao/requisicao.module')
+      .then(m => m.RequisicaoModule), canActivate: [AuthguardService]
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

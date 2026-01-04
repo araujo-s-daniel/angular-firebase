@@ -15,6 +15,6 @@ export class Requisicao extends Model {
 export class Movimentacao extends Model {
   funcionario: Funcionario;
   dataHora: Date;
-  status: string
+  status: string;
   descricao: string;
 }
